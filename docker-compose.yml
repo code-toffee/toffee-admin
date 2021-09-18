@@ -1,0 +1,16 @@
+version: '3.5'
+services:
+  php-diy:
+    build:
+      context: .
+      args:
+        - TZ=PRC
+        - CHANGE_SOURCE=true
+        - XEDEBUG_INSTALL=false
+    container_name: php-diy
+    #restart: always
+    tty: true
+    volumes:
+      - ./:/var/www
+
+

@@ -1,0 +1,4 @@
+# 申请图片验证码接口
+GET {{host}}/api/verify/img-code
+
+###

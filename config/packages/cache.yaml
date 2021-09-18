@@ -1,0 +1,35 @@
+parameters:
+    redis.config:
+        dsn: '%env(string:REDIS_DSN)%'
+        options:
+            class: '%env(default::string:REDIS_CLASS)%'
+            compression: '%env(default::bool:REDIS_COMPRESSION)%'
+            lazy: '%env(default::bool:REDIS_LAZY)%'
+            persistent: '%env(default::int:REDIS_PERSISTENT)%'
+            persistent_id: '%env(default::string:REDIS_PERSISTENT_ID)%'
+            read_timeout: '%env(default::int:REDIS_READ_TIMEOUT)%'
+            retry_interval: '%env(default::int:REDIS_RETRY_INTERVAL)%'
+            tcp_keepalive: '%env(default::int:REDIS_TCP_KEEPALIVE)%'
+            timeout: '%env(default::int:REDIS_TIMEOUT)%'
+framework:
+    cache:
+        # Unique name of your app: used to compute stable namespaces for cache keys.
+        #prefix_seed: your_vendor_name/app_name
+
+        # The "app" cache stores to the filesystem by default.
+        # The data in this cache should persist between deploys.
+        # Other options include:
+
+        # Redis
+        #app: cache.adapter.redis
+        #default_redis_provider: redis://localhost
+
+        # APCu (not recommended with heavy random-write workloads as memory fragmentation can cause perf issues)
+        #app: cache.adapter.apcu
+
+        # Namespaced pools use the above "app" backend by default
+        #pools:
+            #my.dedicated.cache: null
+
+        app: cache.adapter.redis
+        default_redis_provider: '%env(string:REDIS_DSN)%'

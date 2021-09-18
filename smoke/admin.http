@@ -1,0 +1,258 @@
+# 获取图片验证码
+GET {{host}}/api/verify/img-code
+Authorization: {{adminToken}}
+
+###
+
+# 登陆接口
+POST {{host}}/admin/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin888",
+  "key": "22177d2bf20b9abe0bd224d5ebf39668a48df7d1cc59a53e242d59b858269b9b",
+  "remeber": false,
+  "code": "1234"
+}
+
+> {% client.global.set('adminToken',response.body.result.token); %}
+
+###
+
+
+# 登出接口
+GET {{host}}/admin/logout
+Authorization: {{adminToken}}
+
+###
+
+# 获取用户身份信息
+GET {{host}}/admin/get-user-info
+Authorization: {{adminToken}}
+
+###
+
+
+# 获取用户权限标识符
+GET {{host}}/admin/get-prem-code
+Authorization: {{adminToken}}
+
+###
+
+# 获取用户菜单
+GET {{host}}/admin/get-menus
+Authorization: {{adminToken}}
+
+###
+
+# 获取部门分类表
+GET {{host}}/admin/get-dept-list
+Authorization: {{adminToken}}
+
+###
+
+# 新增部门
+POST {{host}}/admin/add-dept
+Authorization: {{adminToken}}
+Content-Type: application/json
+
+{
+  "name": "新增部门",
+  "pid": "1-2-3"
+}
+
+###
+
+# 修改部门
+POST {{host}}/admin/update-dept
+Authorization: {{adminToken}}
+Content-Type: application/json
+
+{
+  "id": "1-16",
+  "name": "部门被改名了"
+}
+
+###
+
+
+# 删除部门
+POST {{host}}/admin/delete-dept
+Authorization: {{adminToken}}
+Content-Type: application/json
+
+{
+  "ids": [
+    "1-16"
+  ]
+}
+
+###
+
+# 获取角色列表
+GET {{host}}/admin/get-role-list
+Authorization: {{adminToken}}
+
+###
+
+# 删除角色
+POST {{host}}/admin/delete-role
+Authorization: {{adminToken}}
+Content-Type: application/json
+
+{
+  "id": 3
+}
+
+###
+
+# 增加角色
+POST {{host}}/admin/add-role
+Authorization: {{adminToken}}
+Content-Type: application/json
+
+{
+  "name": "垃1圾1",
+  "level": 1,
+  "description": "",
+  "dataScope": "全部",
+  "dept": [
+    "1"
+  ],
+  "menu": [
+    "1",
+    "1-2"
+  ]
+}
+
+###
+# 更新角色
+POST {{host}}/admin/update-role
+Authorization: {{adminToken}}
+Content-Type: application/json
+
+{
+  "id": "3",
+  "name": "垃1圾2",
+  "level": 1,
+  "description": "",
+  "dataScope": "全部",
+  "dept": [
+    "8"
+  ],
+  "menu": [
+    "8"
+  ]
+}
+
+###
+
+# 获取菜单
+GET {{host}}/admin/get-menu-list
+Authorization: {{adminToken}}
+
+###
+
+# 更新菜单
+POST {{host}}/admin/update-menu
+Authorization: {{adminToken}}
+Content-Type: application/json
+
+{
+  "ids": [
+    "1-4"
+  ]
+}
+
+###
+
+
+# 删除菜单
+POST {{host}}/admin/delete-menu
+Authorization: {{adminToken}}
+Content-Type: application/json
+
+{
+  "ids": [
+    "1-4"
+  ]
+}
+
+###
+
+# 获取用户管理列表
+GET {{host}}/admin/get-user-table-list
+Authorization: {{adminToken}}
+
+###
+
+
+# 新增用户
+POST /admin/add-user
+Authorization: {{adminToken}}
+Content-Type: application/json
+
+{
+  "userName": "aaaa",
+  "password": "123",
+  "state": true,
+  "isAdmin": false
+}
+
+###
+
+
+# 更新用户
+POST /admin/update-user
+Authorization: {{adminToken}}
+Content-Type: application/json
+
+{
+  "id": 1,
+  "userName": "aaaa",
+  "password": "123",
+  "state": true,
+  "isAdmin": false
+}
+
+###
+
+
+# 删除用户
+POST {{host}}/admin/delete-user
+Authorization: {{adminToken}}
+Content-Type: application/json
+
+{
+  "id": 1
+}
+
+###
+
+
+# 查看用户详情
+POST {{host}}/admin/get-user-detail-info
+Authorization: {{adminToken}}
+Content-Type: application/json
+
+{
+  "id": 1
+}
+
+###
+
+
+
+# 修改密码
+
+POST {{host}}/admin/charge-pwd
+Authorization: {{adminToken}}
+Content-Type: application/json
+
+{
+  "oldPwd": "admin888",
+  "newPwd": "admin111"
+}
+
+###
